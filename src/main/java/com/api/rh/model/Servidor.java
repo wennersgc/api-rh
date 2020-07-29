@@ -1,6 +1,10 @@
 package com.api.rh.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -11,22 +15,42 @@ public class Servidor {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 10, max = 30)
     private String nome;
+
+    @NotNull
     @Column(name = "data_nascimento")
+    @Past
     private LocalDate dataNascimento;
+
     private String telefone;
+
+    @NotNull
+    @Pattern(regexp = "(\\(?\\d{2}\\)?\\s)?(\\d{4,5}\\-\\d{4})")
     private String celular;
+
+    @NotNull
+    @Email
     private String email;
+
+    @NotNull
+    @CPF
     private String cpf;
+
     private String rg;
 
+    @Valid
     @Embedded
-
     private Endereco endereco;
 
     @ManyToOne
     @JoinColumn (name = "departamento_id")
     private Departamento departamento;
+
+    @ManyToOne
+    @JoinColumn (name = "cargo_id")
+    private Cargo cargo;
 
     public Long getId() {
         return id;
@@ -106,6 +130,14 @@ public class Servidor {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
     @Override
