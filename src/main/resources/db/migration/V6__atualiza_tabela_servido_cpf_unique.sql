@@ -1,0 +1,1 @@
+alter table  servidor add constraint unique_cpf unique (cpf);

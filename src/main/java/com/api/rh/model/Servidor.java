@@ -37,6 +37,7 @@ public class Servidor {
 
     @NotNull
     @CPF
+    @Column(unique = true)
     private String cpf;
     
     private String rg;
