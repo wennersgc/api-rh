@@ -24,6 +24,7 @@ public class Servidor {
     @Past
     private LocalDate dataNascimento;
 
+    @Pattern(regexp = "(\\(?\\d{2}\\)?\\s)?(\\d{4,5}\\-\\d{4})")
     private String telefone;
 
     @NotNull
@@ -37,7 +38,7 @@ public class Servidor {
     @NotNull
     @CPF
     private String cpf;
-
+    
     private String rg;
 
     @Valid
