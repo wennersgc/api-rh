@@ -23,6 +23,7 @@ public class ServidorResource {
     @Autowired
     private ApplicationEventPublisher publisher;
 
+
     @GetMapping
     public List<Servidor> listar() {
         return servidorRepository.findAll();
