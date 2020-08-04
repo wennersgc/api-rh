@@ -1,0 +1,1 @@
+alter table servidor drop column departamento_id;

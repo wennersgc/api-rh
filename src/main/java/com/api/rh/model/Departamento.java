@@ -1,19 +1,20 @@
 package com.api.rh.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Entity(name = "departamento")
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Departamento {
 
     @Id
@@ -23,6 +24,9 @@ public class Departamento {
     @NonNull
     @Size (min = 5, max = 50)
     private String descricao;
+
+    @OneToMany (mappedBy = "departamento", cascade = CascadeType.ALL)
+    private List<Cargo> cargos;
 
     @Override
     public boolean equals(Object o) {

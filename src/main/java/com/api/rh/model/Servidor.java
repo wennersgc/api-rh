@@ -52,15 +52,8 @@ public class Servidor {
 
     @ManyToOne
     @Valid
-    @JoinColumn (name = "departamento_id")
-    private Departamento departamento;
-
-    @ManyToOne
-    @Valid
     @JoinColumn (name = "cargo_id")
     private Cargo cargo;
-
-
 
     @Override
     public boolean equals(Object o) {

@@ -1,17 +1,19 @@
 package com.api.rh.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Entity
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Cargo {
 
     @Id
@@ -19,6 +21,10 @@ public class Cargo {
     private Long id;
 
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn (name = "departamento_id")
+    private Departamento departamento;
 
 
     @Override
