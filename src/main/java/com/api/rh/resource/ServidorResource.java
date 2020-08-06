@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/servidores")
@@ -34,5 +35,16 @@ public class ServidorResource {
         final Servidor servidorSalvo = servidorRepository.save(servidor);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, servidorSalvo.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(servidorSalvo);
+    }
+
+    @GetMapping("/{codigo}")
+    public ResponseEntity<Servidor> buscarOeloCodigo(@PathVariable Long codigo) {
+        Optional<Servidor> servidor = servidorRepository.findById(codigo);
+
+        if (servidor.isPresent()) {
+            return ResponseEntity.ok(servidor.get());
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }
