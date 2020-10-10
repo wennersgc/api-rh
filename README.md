@@ -2,9 +2,8 @@
 > Esse sistema tem como objetivo por em partica meus conhecimentos no desenvolvimento de API.
 > Esse sistema não deve ser usado em uma aplicação real.
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://opensource.org/licenses/MIT)
 [![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://github.com/wennersgc/rh-api)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Instalação
 
